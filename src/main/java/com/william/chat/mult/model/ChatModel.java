@@ -1,6 +1,5 @@
     package com.william.chat.mult.model;
 
-    import com.fasterxml.jackson.annotation.JacksonInject;
     import jakarta.persistence.*;
     import lombok.*;
 
