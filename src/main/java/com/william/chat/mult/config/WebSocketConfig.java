@@ -1,4 +1,4 @@
-package com.william.chat.mult.configuration;
+package com.william.chat.mult.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

@@ -1,7 +1,7 @@
 package com.william.chat.mult.controller;
 
-import com.william.chat.mult.object.MessageObj;
-import com.william.chat.mult.object.ResponseObj;
+import com.william.chat.mult.object.MessageRec;
+import com.william.chat.mult.object.ResponseRec;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 public class WebSocketController {
     @MessageMapping("/message")
     @SendTo("/topics/message")
-    public ResponseObj messageController(MessageObj obj){
-        return new ResponseObj(obj.getMessage());
+    public ResponseRec messageController(MessageRec obj){
+        return new ResponseRec(STR."User name: \{obj.username()} message : \{obj.message()}");
     }
 }
