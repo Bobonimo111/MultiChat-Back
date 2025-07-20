@@ -5,13 +5,14 @@ import lombok.*;
 
 import java.util.List;
 import java.util.UUID;
+
 @Entity
 @Table(name = "users")
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
