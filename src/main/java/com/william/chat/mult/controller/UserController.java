@@ -1,10 +1,15 @@
 package com.william.chat.mult.controller;
 
+import com.william.chat.mult.dto.NewUserDto;
 import com.william.chat.mult.dto.UserDto;
 import com.william.chat.mult.service.UserService;
-import jakarta.websocket.server.PathParam;
+import jakarta.validation.Valid;
+import org.apache.catalina.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("user")
@@ -16,13 +21,24 @@ public class UserController {
         this.userService = userService;
     }
 
+    //validar os dados
     @PostMapping
-    public ResponseEntity<?> novoUsuario(@RequestBody UserDto userDto){
-        return userService.novoUsuario(userDto);
+    public ResponseEntity<UserDto> createNewUser(@RequestBody @Valid NewUserDto userDto){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.createNewUser(userDto.username(),userDto.password(),userDto.email()));
     }
 
     @GetMapping
-    public ResponseEntity<?> buscarUsuario(@RequestParam(name = "username") String username){
-        return userService.buscarUsuario(username);
+    public ResponseEntity<List<UserDto>> findByUsernameContaining(@RequestParam(name = "username") String username){
+        List<UserDto> list = userService.findByUsernameContaining(username);
+
+        if(list.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(list);
+    }
+
+    @PutMapping
+    public ResponseEntity<UserDto> updateUserById(@RequestBody @Valid UserDto userDto){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUserById(userDto));
     }
 }
