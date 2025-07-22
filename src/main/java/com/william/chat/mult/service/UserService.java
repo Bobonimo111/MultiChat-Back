@@ -42,14 +42,13 @@ public class UserService {
             return null;
         }
         //Convertendo a lista do tipo UserModel para o tipo UserSavedDto.
-        List<UserDto> userSavedDtos =   userModelList
+
+        return userModelList
                 .stream()
                 .map(
                         model -> this.prepareUserDto(model)
                 )
                 .collect(Collectors.toList());
-
-        return userSavedDtos;
     }
 
     public UserDto updateUserById(UserDto userDto){
