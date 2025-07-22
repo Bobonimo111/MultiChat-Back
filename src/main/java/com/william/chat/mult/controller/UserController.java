@@ -27,7 +27,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.createNewUser(userDto.username(),userDto.password(),userDto.email()));
     }
 
-    @GetMapping
+    @GetMapping("/containing")
     public ResponseEntity<List<UserDto>> findByUsernameContaining(@RequestParam(name = "username") String username){
         List<UserDto> list = userService.findByUsernameContaining(username);
 

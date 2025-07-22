@@ -31,11 +31,7 @@ public class UserService {
 
         UserModel savedUser =  userRepository.save(userModel);
 
-        return new UserDto(
-                savedUser.getId(),
-                savedUser.getUsername(),
-                null,
-                savedUser.getEmail());
+        return this.prepareUserDto(savedUser);
     }
 
     public List<UserDto> findByUsernameContaining(String username){
@@ -49,7 +45,7 @@ public class UserService {
         List<UserDto> userSavedDtos =   userModelList
                 .stream()
                 .map(
-                        model -> new UserDto(model.getId(),model.getUsername(),null, model.getEmail())
+                        model -> this.prepareUserDto(model)
                 )
                 .collect(Collectors.toList());
 
@@ -63,10 +59,20 @@ public class UserService {
         }
         UserModel user = userOp.get();
 
-        user.setUsername((!userDto.username().isBlank()? userDto.username() : user.getUsername()));
-        user.setEmail((!userDto.email().isBlank()? userDto.email() : user.getEmail()));
-        user.setPassword((!userDto.password().isBlank()? userDto.password() : user.getPassword()));
+        user.setUsername(((userDto.username() == null || "".equals(userDto.username()))? userDto.username() : user.getUsername()));
+        user.setEmail((!(userDto.email() == null || "".equals(userDto.email()))? userDto.email() : user.getEmail()));
+        user.setPassword((!(userDto.password() == null || "".equals(userDto.password()))? userDto.password() : user.getPassword()));
 
-        return null;
+        UserModel savedUser = userRepository.save(user);
+
+        return prepareUserDto(savedUser);
+    }
+
+    private UserDto prepareUserDto(UserModel savedUser){
+        return new UserDto(
+                savedUser.getId(),
+                savedUser.getUsername(),
+                null,
+                savedUser.getEmail());
     }
 }
