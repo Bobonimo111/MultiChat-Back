@@ -30,4 +30,6 @@ public class UserModel {
     @ManyToMany(mappedBy = "users",fetch = FetchType.EAGER)
     private List<ChatModel> chats;
 
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<MessageModel> messages;
 }

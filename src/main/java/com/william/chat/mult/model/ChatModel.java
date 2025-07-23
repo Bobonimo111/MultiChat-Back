@@ -18,6 +18,9 @@
         @GeneratedValue(strategy = GenerationType.UUID)
         private UUID id;
 
+        @Column(name = "chat_name")
+        private String name;
+
         @OneToMany(mappedBy = "chat",fetch = FetchType.EAGER)
         private List<MessageModel> messages;
 
