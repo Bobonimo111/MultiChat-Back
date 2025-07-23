@@ -1,4 +1,4 @@
-package com.william.chat.mult.object;
+package com.william.chat.mult.dto.chat;
 
 public record MessageRec(
         String message,
