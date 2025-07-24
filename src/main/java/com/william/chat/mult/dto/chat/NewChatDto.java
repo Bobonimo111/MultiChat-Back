@@ -1,4 +1,4 @@
-package com.william.chat.mult.dto;
+package com.william.chat.mult.dto.chat;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
