@@ -4,7 +4,6 @@ import com.william.chat.mult.dto.NewUserDto;
 import com.william.chat.mult.dto.UserDto;
 import com.william.chat.mult.service.UserService;
 import jakarta.validation.Valid;
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
