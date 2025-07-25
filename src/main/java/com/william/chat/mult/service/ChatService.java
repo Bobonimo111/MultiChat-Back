@@ -50,6 +50,6 @@ public class ChatService {
     }
 
     private SavedChatDto prepareChatDto(ChatModel chatModel){
-        return new SavedChatDto(chatModel.getId(), chatModel.getName())
+        return new SavedChatDto(chatModel.getId(), chatModel.getName());
     }
 }

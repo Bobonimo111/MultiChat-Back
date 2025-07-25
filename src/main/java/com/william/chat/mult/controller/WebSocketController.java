@@ -11,6 +11,6 @@ public class WebSocketController {
     @MessageMapping("/message")
     @SendTo("/topics/message")
     public ResponseRec messageController(MessageRec obj){
-        return new ResponseRec(STR."User name: \{obj.username()} message : \{obj.message()}");
+        return new ResponseRec("User name:" +  obj.username() + " message :" + "{obj.message()}");
     }
 }
