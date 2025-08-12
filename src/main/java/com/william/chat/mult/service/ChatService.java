@@ -15,8 +15,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class ChatService {
+
     public final ChatRepository chatRepository;
     public final UserRepository userRepository;
+
     public ChatService(ChatRepository chatRepository, UserRepository userRepository) {
         this.chatRepository = chatRepository;
         this.userRepository = userRepository;
