@@ -1,0 +1,20 @@
+.ps-color1 {
+            background-color: #9a5d2d !important;
+        }
+.ps-color2{
+           background-color: #e4ccb9;
+        }
+.h-10 {
+            height: 10%;
+        }
+
+.h-90 {
+            height: 90%;
+        }
+#find-users-btn{
+             text-decoration: none;
+        }
+
+#chats-section{
+            overflow-wrap:break-word;
+        }

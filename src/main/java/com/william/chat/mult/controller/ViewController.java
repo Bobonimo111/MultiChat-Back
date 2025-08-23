@@ -11,7 +11,13 @@ public class ViewController {
 
     @GetMapping("home")
     public ModelAndView homeDesktop(){
-        ModelAndView modelAndView = new ModelAndView("homeDesktop");
+        ModelAndView modelAndView = new ModelAndView("home");
+        return modelAndView;
+    }
+
+    @GetMapping("login")
+    public ModelAndView login(){
+        ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }
 
