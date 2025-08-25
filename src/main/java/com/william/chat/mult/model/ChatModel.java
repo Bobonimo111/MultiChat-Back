@@ -30,4 +30,8 @@
         inverseJoinColumns = {@JoinColumn(name = "user_id")})
         private List<UserModel> users;
 
+        void addUser(UserModel user){
+            users.add(user);
+        }
+
     }

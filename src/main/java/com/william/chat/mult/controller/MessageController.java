@@ -8,10 +8,11 @@ import com.william.chat.mult.service.MessageService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("msg")
@@ -30,6 +31,11 @@ public class MessageController {
                                 dto.message()
                                 ,dto.chat_id()
                                 ,dto.user_id()));
+    }
+
+    @GetMapping("/id")
+    public List<MessageDto> getMessagesByChatId(@RequestParam(required = true)UUID id){
+        return messageService.getMessagesByChatId(id);
     }
 }
 

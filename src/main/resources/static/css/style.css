@@ -1,20 +1,34 @@
 .ps-color1 {
-            background-color: #9a5d2d !important;
-        }
-.ps-color2{
-           background-color: #e4ccb9;
-        }
+        background-color: #9a5d2d !important;
+}
+
+.ps-color2 {
+        background-color: #e4ccb9;
+}
+
 .h-10 {
-            height: 10%;
-        }
+        height: 10vh;
+}
 
 .h-90 {
-            height: 90%;
-        }
-#find-users-btn{
-             text-decoration: none;
-        }
+        height: 90vh;
+}
 
-#chats-section{
-            overflow-wrap:break-word;
-        }
+.max-h-90{
+    max-height: 90vh;
+}
+
+#find-users-btn {
+
+        text-decoration: none;
+}
+
+#chats-section {
+        overflow-wrap: break-word;
+}
+
+#message-form button:hover{
+    box-shadow: 2px 12px 25px -5px rgba(0,0,0,1);
+-webkit-box-shadow: 2px 12px 25px -5px rgba(0,0,0,1);
+-moz-box-shadow: 2px 12px 25px -5px rgba(0,0,0,1);
+}

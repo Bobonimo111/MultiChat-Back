@@ -1,6 +1,7 @@
 package com.william.chat.mult.controller;
 
 import com.william.chat.mult.dto.NewUserDto;
+import com.william.chat.mult.dto.ReturnUserDto;
 import com.william.chat.mult.dto.UserDto;
 import com.william.chat.mult.service.UserService;
 import jakarta.validation.Valid;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("user")
@@ -39,5 +41,10 @@ public class UserController {
     @PutMapping
     public ResponseEntity<UserDto> updateUserById(@RequestBody @Valid UserDto userDto){
         return ResponseEntity.status(HttpStatus.OK).body(userService.updateUserById(userDto));
+    }
+
+    @GetMapping("usersByChat/{id}")
+    public List<ReturnUserDto> getUserByChatId(@PathVariable(name = "id",required = true) UUID chatId){
+        return userService.getUserByChatId(chatId);
     }
 }

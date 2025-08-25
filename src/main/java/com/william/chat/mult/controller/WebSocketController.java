@@ -8,9 +8,12 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class WebSocketController {
-    @MessageMapping("/message")
-    @SendTo("/topics/message")
+
+    @MessageMapping("/sendMessage") // se une a rota no setApplicationDestinationPrefixes
+    @SendTo("/web-chat/message") // Aonde a mesagem é retornada para o front por meio de um subscribe
     public ResponseRec messageController(MessageRec obj){
         return new ResponseRec("User name:" +  obj.username() + " message :" + "{obj.message()}");
     }
+
+    //@MessageMapping()
 }

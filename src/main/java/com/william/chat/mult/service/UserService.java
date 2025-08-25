@@ -1,5 +1,6 @@
 package com.william.chat.mult.service;
 
+import com.william.chat.mult.dto.ReturnUserDto;
 import com.william.chat.mult.dto.UserDto;
 import com.william.chat.mult.model.UserModel;
 import com.william.chat.mult.repository.UserRepository;
@@ -9,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -73,5 +75,12 @@ public class UserService {
                 savedUser.getUsername(),
                 null,
                 savedUser.getEmail());
+    }
+
+    public List<ReturnUserDto> getUserByChatId(UUID chatId) {
+        List<UserModel> users = userRepository.findByChatsId(chatId);
+        return users.stream().map(
+                (m) -> new ReturnUserDto(m.getId(),m.getUsername(), m.getEmail()))
+                .collect(Collectors.toList());
     }
 }
